@@ -29,6 +29,7 @@ Route::group(['middleware' => ['web','admin']] , function(){
     Route::post('/adminpanel/create','admin\UsersController@store');
     Route::get('/adminpanel/users/{id}/edit','admin\UsersController@edit');
     Route::post('/adminpanel/users/{id}','admin\UsersController@update');
+    Route::post('/adminpanel/user/changepassword','admin\UsersController@updatePassword');
     Route::get('/adminpanel/users/{id}/delete','admin\UsersController@delete');
 
     // Clients

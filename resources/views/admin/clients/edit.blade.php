@@ -92,14 +92,14 @@
                             </div>
 
 
-
-
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="submit">
 
                                         {{ __('Update') }}
                                     </button>
+
+
                                 </div>
                             </div>
                         </form>
@@ -112,9 +112,6 @@
             </div>
         </div>
     </section>
-
-
-
 
 
 
@@ -136,7 +133,9 @@
                     <!-- /.box-header -->
                     <div class="box-body">
 
-                        {!! Form::open(['url'=>"/adminpanel/users/'.$user->id", 'method'=>'post']) !!}
+
+                        <form method="post" action="{{url('/adminpanel/user/changepassword')}}">
+                            @csrf
                         <input type="hidden" value="{{$user->id}}" name="user_id">
 
 
@@ -175,16 +174,12 @@
                         </div>
 
 
-                        {!! Form::close() !!}
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-
-
 
 
 

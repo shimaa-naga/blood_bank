@@ -13,7 +13,7 @@ class Client extends Authenticatable
     protected $fillable = array('name', 'email', 'dob', 'phone', 'password', 'donation_last_date', 'city_id', 'blood_type', 'blood_type_id', 'is_active');
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'api_token',
     ];
 
 

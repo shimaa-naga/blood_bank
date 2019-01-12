@@ -43,10 +43,10 @@ class AuthController extends Controller
 
         $request->merge(['password' => bcrypt($request->password)]);
         $client = Client::create($request->all());
-        $client->remember_token = str_random(100);
+        $client->api_token = str_random(100);
         $client->save();
         return responseJson(1 ,'client added successfully', [
-            'remember_token' => $client->remember_token ,
+            'api_token' => $client->api_token ,
             'client'  => $client
         ]);
 
@@ -72,7 +72,7 @@ class AuthController extends Controller
             if(Hash::check($request->password , $client->password))
             {
                 return responseJson(1 , 'Signed In' , [
-                    'remember_token' => $client->remember_token,
+                    'api_token' => $client->api_token,
                     'client' => $client ]);
             }
             else
