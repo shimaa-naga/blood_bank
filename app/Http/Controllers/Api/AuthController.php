@@ -27,7 +27,7 @@ class AuthController extends Controller
             'email'              => 'required|email|unique:clients|string|max:255',
             'password'           => 'required|string|min:6|confirmed',
             'dob'                => 'required|date|date_format:Y-m-d|before:2001-01-01',
-            'phone'              => 'required|min:11|integer|unique:clients',
+            'phone'              => 'required|min:11|numeric|unique:clients',
             'donation_last_date' => 'required|date|date_format:Y-m-d',
             'blood_type'         => 'required|in:O-,O+,B-,B+,A-,A+,AB-,AB+',
             'blood_type_id'      => 'required',
@@ -56,7 +56,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $rules = [
-            'phone'              => 'required|min:11|integer|unique:clients',
+            'phone'              => 'required|min:11|numeric|unique:clients',
             'password'           => 'required|string|min:6'
         ];
 

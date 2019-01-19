@@ -54,3 +54,4 @@ Route::group(['middleware' => 'web'], function(){
     Route::get('/home', 'HomeController@index')->name('home');
 });
 //Route::get('/siteSetting', 'Api\MainController@siteSetting');
+Route::get('/posts_filter/{keyword?}','Api\MainController@posts_with_filter');

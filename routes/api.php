@@ -32,6 +32,11 @@ Route::group(['prefix' => 'v1' , 'namespace' => 'Api'] , function(){
         Route::get('/posts','MainController@posts');
         Route::post('/post_details/{id}','MainController@post_details');
         Route::get('/posts_filter/{keyword?}','Api\MainController@posts_with_filter');
+        Route::get('/categories','MainController@categories');
+        Route::get('/list_orders','MainController@list_orders');
+        Route::post('/order_details/{id}','MainController@order_details');
+        Route::post('/create_order','MainController@create_order');
+        Route::get('/listOfNotificatios','MainController@listOfNotificatios');
         Route::get('/siteSetting','MainController@siteSetting');
     });
 
