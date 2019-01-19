@@ -20,16 +20,22 @@ Route::middleware('auth:api')->get('/clients', function (Request $request) {
 
 // api/v1/
 Route::group(['prefix' => 'v1' , 'namespace' => 'Api'] , function(){
-    Route::get('governorates','MainController@governorates');
-    Route::get('cities','MainController@cities');
-    Route::post('register','AuthController@register');
-    Route::post('login','AuthController@login');
+    Route::get('/governorates','MainController@governorates');
+    Route::get('/cities','MainController@cities');
+    Route::post('/register','AuthController@register');
+    Route::post('/login','AuthController@login');
 
 
     // Routes need Authentication
     Route::group(['middleware' => 'auth:api'] , function(){
-        Route::get('posts','MainController@posts');
+        Route::get('/profile/{id}','AuthController@profile');
+        Route::get('/posts','MainController@posts');
+        Route::post('/post_details/{id}','MainController@post_details');
+        Route::get('/posts_filter/{keyword?}','Api\MainController@posts_with_filter');
+        Route::get('/siteSetting','MainController@siteSetting');
     });
+
 
 });
 //Route::get('v1/cities','Api\MainController@cities');
+

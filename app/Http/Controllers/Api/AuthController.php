@@ -85,7 +85,16 @@ class AuthController extends Controller
             return responseJson(0 , 'The login data is incorrect');
         }
 
+    }
 
+
+    public function profile($id)
+    {
+        $client_details = Client::find($id);
+        if($client_details){
+            return responseJson(1 , 'client details' , $client_details);
+        }
+        return responseJson(0 , 'Not Found This Client');
     }
 
     /*

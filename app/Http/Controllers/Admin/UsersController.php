@@ -74,7 +74,7 @@ class UsersController extends Controller
           $rules =  [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'password' => ['required', 'string', 'min:6']
+            'password' => ['confirmed', 'string', 'min:6']
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -85,6 +85,13 @@ class UsersController extends Controller
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        if($request->has('password'))
+        {
+            $user->password = bcrypt($request->password);
+        }
+
+//        Auth::user();
+//        auth()->user();
         //$user->password = Hash::make($request->password);
         //optional($user)->password = Hash::make($request->password);;
 
@@ -94,18 +101,7 @@ class UsersController extends Controller
 
     }
 
-    public function updatePassword(Request $request){
 
-        $user = User::find($request->user_id);
-        $user->password = bcrypt($request->input('password'));
-        $user->save();
-
-        return Redirect::back()->withFlashMessage('updated password successfully');
-
-
-        //dd($user);
-        //return Redirect::back();
-    }
 
     public function delete($id)
     {
