@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -26,12 +27,12 @@ class UsersController extends Controller
     public function index(){
 
         $user = User::all();
-        return view('admin.clients.index',compact('user'));
+        return view('admin.users.index',compact('user'));
     }
 
     public function create(){
 
-        return view('admin.clients.add');
+        return view('admin.users.add');
     }
 
 
@@ -62,29 +63,38 @@ class UsersController extends Controller
 
         $user= User::find($id);
         //dd($user);
-        return view('admin.clients.edit', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return $this
+     */
     public function update(Request $request , $id ){
 
+        //return [$request->all()];
         $user = User::find($id);
-      // dd($user);
-
 
           $rules =  [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'password' => ['confirmed', 'string', 'min:6']
+            'password' => ['sometimes','confirmed']
         ];
+
+        if(!is_null($request->password)){
+            $rules['password'] = ['confirmed', 'min:6'];
+        }
 
         $validator = Validator::make($request->all(), $rules);
 
         if($validator->fails())
             return redirect()->back()->withErrors($validator);
 
-
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+
         if($request->has('password'))
         {
             $user->password = bcrypt($request->password);
@@ -109,6 +119,12 @@ class UsersController extends Controller
             $user = User::find($id)->delete();
             return redirect('/adminpanel/users')->withFlashMessage('deleted user successfully');
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
     }
 
 }

@@ -3,7 +3,7 @@
 
 @section('title')
 
-    Add Client
+    Add User
 
     @endsection
 
@@ -27,8 +27,8 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{url('/adminpanel')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li ><a href="{{url('/adminpanel/clients')}}">All Clients</a></li>
-            <li class="active"><a href="{{url('/adminpanel/client/create')}}">Add New Client</a></li>
+            <li ><a href="{{url('/adminpanel/users')}}">All Users</a></li>
+            <li class="active"><a href="{{url('/adminpanel/users/create')}}">Add New User</a></li>
 
         </ol>
     </section>
@@ -53,9 +53,9 @@
 
 
 
-                        <form method="POST" action="{{ url('adminpanel/client/create') }}">
+                        <form method="POST" action="{{ url('adminpanel/users/create') }}">
 
-                        @include('admin.clients.form')
+                        @include('admin.users.form')
 
                         </form>
 

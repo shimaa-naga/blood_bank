@@ -22,23 +22,30 @@ Route::get('/city','Api\MainController@cities');
 
 Route::group(['middleware' => ['web','admin'], 'namespace' => 'Admin'] , function(){
 
-    Route::get('/adminpanel','admin\AdminController@index');
+    Route::get('/adminpanel','AdminController@index');
+
     // user as Admin
     Route::get('/adminpanel/users','UsersController@index');
-    Route::get('/adminpanel/create','UsersController@create');
-    Route::post('/adminpanel/create','UsersController@store');
+    Route::get('/adminpanel/users/create','UsersController@create');
+    Route::post('/adminpanel/users/create','UsersController@store');
     Route::get('/adminpanel/users/{id}/edit','UsersController@edit');
     Route::post('/adminpanel/users/{id}','UsersController@update');
     Route::get('/adminpanel/users/{id}/delete','UsersController@delete');
 
+    Route::get('/adminpanel/logout','UsersController@logout');
+
     // Clients
-    Route::get('/adminpanel/clients','Admin\ClientsController@index');
-
-
+    Route::get('/adminpanel/clients','ClientsController@index');
+    Route::get('/adminpanel/client/create','ClientsController@create');
+    Route::post('/adminpanel/client/create','ClientsController@store');
+    Route::get('/adminpanel/client/{id}/edit','ClientsController@edit');
+    Route::post('/adminpanel/client/{id}','ClientsController@update');
+    Route::get('/adminpanel/client/{id}/pan','ClientsController@pan');
 
     //setting site
-    Route::get('/adminpanel/sitesetting','Admin\SiteSettingController@index');
-    Route::post('/adminpanel/sitesetting','Admin\SiteSettingController@store');
+    Route::get('/adminpanel/sitesetting','SiteSettingController@index');
+    Route::post('/adminpanel/sitesetting','SiteSettingController@updateSettings');
+    //Route::post('/updateSettings/{id}','MainController@updateSettings');
 
 });
 

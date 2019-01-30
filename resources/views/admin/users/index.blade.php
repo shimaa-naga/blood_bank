@@ -2,7 +2,7 @@
 
 @section('title')
 
-    Control In All Clients
+    Control In All Users
 
 @endsection
 
@@ -64,7 +64,6 @@
                                             <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 95px;">#</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 121px;">User Name</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 106px;">Email</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 60px;">Is Active</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 90px;">Created Time</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 90px;">Updated Time</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 54px;">Controll</th>
@@ -73,18 +72,17 @@
                                             <tbody>
 
 
-                                            @foreach($client as $clientInfo)
+                                            @foreach($user as $userinfo)
                                                 <tr role="row" class="odd">
-                                                    <td>{{$clientInfo->id}}</td>
-                                                    <td class="sorting_1">{{$clientInfo->name}}</td>
-                                                    <td> {{$clientInfo->email}} </td>
-                                                    <td> {{($clientInfo->is_active) == 1 ? "Yes" :  "No" }} </td>
-                                                    <td>{{$clientInfo->created_at}}</td>
-                                                    <td>{{$clientInfo->updated_at}}</td>
+                                                    <td>{{$userinfo->id}}</td>
+                                                    <td class="sorting_1">{{$userinfo->name}}</td>
+                                                    <td> {{$userinfo->email}} </td>
+                                                    <td>{{$userinfo->created_at}}</td>
+                                                    <td>{{$userinfo->updated_at}}</td>
 
                                                     <td>
-                                                        <a href="{{url('/adminpanel/client/'.$clientInfo->id.'/edit')}}"> Edit / </a>
-                                                        <a href="{{url('/adminpanel/client/'.$clientInfo->id.'/pan')}}"> Pan</a>
+                                                        <a href="{{url('/adminpanel/users/'.$userinfo->id.'/edit')}}"> Edit</a>
+                                                        <a href="{{url('/adminpanel/users/'.$userinfo->id.'/delete')}}"> Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -97,7 +95,6 @@
                                             <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 95px;">#</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 121px;">User Name</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 106px;">Email</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 60px;">Is Active</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 80px;">Created Time</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 54px;">Updated Time</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 54px;">Controll</th>

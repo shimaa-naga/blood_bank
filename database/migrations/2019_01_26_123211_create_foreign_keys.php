@@ -78,12 +78,12 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('favourites', function(Blueprint $table) {
+		Schema::table('client_post', function(Blueprint $table) {
 			$table->foreign('client_id')->references('id')->on('clients')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('favourites', function(Blueprint $table) {
+		Schema::table('client_post', function(Blueprint $table) {
 			$table->foreign('post_id')->references('id')->on('posts')
 						->onDelete('restrict')
 						->onUpdate('restrict');
@@ -134,11 +134,11 @@ class CreateForeignKeys extends Migration {
 		Schema::table('client_notification', function(Blueprint $table) {
 			$table->dropForeign('client_notification_notification_id_foreign');
 		});
-		Schema::table('favourites', function(Blueprint $table) {
-			$table->dropForeign('favourites_client_id_foreign');
+		Schema::table('client_post', function(Blueprint $table) {
+			$table->dropForeign('client_post_client_id_foreign');
 		});
-		Schema::table('favourites', function(Blueprint $table) {
-			$table->dropForeign('favourites_post_id_foreign');
+		Schema::table('client_post', function(Blueprint $table) {
+			$table->dropForeign('client_post_post_id_foreign');
 		});
 	}
 }

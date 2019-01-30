@@ -12,6 +12,16 @@ class CreateGovernoratesTable extends Migration {
 			$table->string('name', 50);
 			$table->timestamps();
 		});
+
+		\App\Governorate::create([
+			'name'=>'test'
+		]);
+		\App\Governorate::create([
+			'name'=>'test2'
+		]);
+		\App\Governorate::create([
+			'name'=>'test3'
+		]);
 	}
 
 	public function down()

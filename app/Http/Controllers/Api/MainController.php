@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Blood_type;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\City;
@@ -19,6 +20,7 @@ use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+
 
 class MainController extends Controller
 {
@@ -43,10 +45,22 @@ class MainController extends Controller
         return responseJson(1 , 'success' , $cities);
     }
 
-    public function posts()
+    public function posts(Request $request)
     {
-        //$posts = Post::all();
-        $posts = Post::with('category')->paginate(10);
+        $posts = Post::all();
+        $posts = Post::where(function($query) use($request){
+            if($request->has('category_id'))
+            {
+                $query->where('category_id',$request->category_id);
+            }
+            if($request->has('keyword'))
+            {
+                $query->where(function($query2) use($request){
+                    $query2->where('title','like','%'.$request->keyword.'%');
+                    $query2->orWhere('content','like','%'.$request->keyword.'%');
+                });
+            }
+        })->with('category')->paginate(10);
         return responseJson(1 , 'success' , $posts);
     }
 
@@ -146,6 +160,32 @@ class MainController extends Controller
         return responseJson(1, 'List Of Notifications', $notification);
     }
 
+    public function postFavourite(Request $request)
+    {
+        $rules = ['post_id' => 'required|exists:posts,id'];
+        $validator = validator()->make($request->all(), $rules);
+        if($validator->fails())
+        {
+            return responseJson(0, $validator->errors()->first(), $validator->errors());
+        }
+
+        $togglePost = $request->user()->posts()->toggle($request->post_id);
+        return responseJson(1, 'Success', $togglePost);
+    }
+
+    public function myFavourites(Request $request)
+    {
+        $posts = $request->user()->posts()->latest()->paginate(20);
+        return responseJson(1, 'Loading....', $posts);
+    }
+
+
+    public function bloodtype()
+    {
+        $bloodtype = Blood_type::with('clients')->get();
+        return responseJson(1,'bloodtypes',$bloodtype);
+    }
+
 
 
     public function siteSetting(){
@@ -153,6 +193,8 @@ class MainController extends Controller
         //dd($sitesetting);
         return responseJson(1 , 'Site Setting' , $sitesetting);
     }
+
+
 
 
 }

@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+//use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Client extends Authenticatable
 {
 
     protected $table = 'clients';
     public $timestamps = true;
-    protected $fillable = array('name', 'email', 'dob', 'phone', 'password', 'donation_last_date', 'city_id', 'blood_type', 'blood_type_id', 'is_active');
+    protected $fillable = array('name', 'email', 'dob', 'phone', 'password', 'donation_last_date', 'city_id', 'blood_type', 'blood_type_id', 'pin_code', 'is_active');
 
     protected $hidden = [
         'password', 'api_token',
@@ -52,9 +53,9 @@ class Client extends Authenticatable
         return $this->belongsToMany('App\Governorate');
     }
 
-    public function favourites()
+    public function posts()
     {
-        return $this->hasMany('App\Favourite');
+        return $this->belongsToMany('App\Post');
     }
 
 }

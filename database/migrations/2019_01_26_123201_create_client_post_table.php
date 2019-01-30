@@ -3,11 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateFavouritesTable extends Migration {
+class CreateClientPostTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('favourites', function(Blueprint $table) {
+		Schema::create('client_post', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('client_id')->unsigned();
 			$table->integer('post_id')->unsigned();
@@ -17,6 +17,6 @@ class CreateFavouritesTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('favourites');
+		Schema::drop('client_post');
 	}
 }

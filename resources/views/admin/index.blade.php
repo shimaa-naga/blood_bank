@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>
-
-    Admin Panel
+بنك الدم
     |
     @yield('title')
 
@@ -266,11 +265,15 @@
             </ul>
           </li>
           <!-- User Account: style can be found in dropdown.less -->
+
+
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{asset('admin/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{Auth::user()->name}}</span>
             </a>
+
+
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
@@ -302,10 +305,14 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{url('/adminpanel/logout')}}" class="btn btn-default btn-flat">Sign out</a>
+
                 </div>
               </li>
             </ul>
+
+
+
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>

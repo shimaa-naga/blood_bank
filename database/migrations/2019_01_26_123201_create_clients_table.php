@@ -14,15 +14,14 @@ class CreateClientsTable extends Migration {
 			$table->date('dob');
 			$table->string('phone');
 			$table->string('password', 100);
-			//$table->boolean('admin');
 			$table->date('donation_last_date');
 			$table->integer('city_id')->unsigned();
-			//$table->string('blood_type', 50);
-			$table->enum('blood_type', array('O-','O+','B-','B+','A-','A+','AB-','AB+'));
+			$table->string('blood_type', 50);
 			$table->integer('blood_type_id')->unsigned();
-			$table->boolean('is_active')->default(1);
-			$table->string('remember_token', 100)->unique()->nullable();
-			//$table->timestamp('email_verified_at');
+			$table->boolean('is_active');
+			$table->string('api_token', 100)->nullable();
+			$table->timestamp('email_verified_at');
+			$table->string('pin_code', 10)->nullable();
 			$table->timestamps();
 		});
 	}

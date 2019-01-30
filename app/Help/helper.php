@@ -9,5 +9,5 @@ function responseJson($status , $message , $data = null)
             'message'   => $message,
             'data'      => $data
         ];
-    return response()->json($response);
+    return response()->json($response,JSON_UNESCAPED_UNICODE );
 }

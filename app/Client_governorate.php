@@ -9,6 +9,6 @@ class Client_governorate extends Model
 
     protected $table = 'client_governorate';
     public $timestamps = true;
-    protected $fillable = array('client_id', 'governate_id');
+    protected $fillable = array('client_id', 'governorate_id');
 
 }

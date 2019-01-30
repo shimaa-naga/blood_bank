@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Blood_type_client extends Model 
+class Blood_type_Client extends Model
 {
 
     protected $table = 'blood_type_client';
