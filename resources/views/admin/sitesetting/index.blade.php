@@ -1,5 +1,5 @@
 
-@extends('admin.index')
+@extends('admin.layout')
 
 @section('title')
 
@@ -211,6 +211,8 @@
                                         @endif
                                     </div>
                                 </div>
+
+
 
 
                             @endforeach

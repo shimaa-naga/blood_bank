@@ -42,6 +42,12 @@ Route::group(['middleware' => ['web','admin'], 'namespace' => 'Admin'] , functio
     Route::post('/adminpanel/client/{id}','ClientsController@update');
     Route::get('/adminpanel/client/{id}/pan','ClientsController@pan');
 
+    // Orders
+    Route::get('/adminpanel/orders','OrdersController@index');
+    Route::get('/adminpanel/order/{id}/details','OrdersController@order_details');
+    Route::get('/adminpanel/order/{id}/delete','OrdersController@delete');
+
+
     //setting site
     Route::get('/adminpanel/sitesetting','SiteSettingController@index');
     Route::post('/adminpanel/sitesetting','SiteSettingController@updateSettings');

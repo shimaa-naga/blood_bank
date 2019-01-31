@@ -115,7 +115,7 @@ class ClientsController extends Controller
         $client->is_active = 0;
         $client->save();
         //return $client;
-        return redirect('/adminpanel/clients')->withFlashMessage('Paned Client Successfully');
+         return redirect('/adminpanel/clients')->withFlashMessage('Paned Client Successfully');
 
     }
 }

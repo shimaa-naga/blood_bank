@@ -151,6 +151,7 @@ class MainController extends Controller
             'order_id'  => $order->id,
         ]);
         $order->save();
+        $notification->save();
         return responseJson(1, 'Ordr Added Successfully', $order , $notification);
     }
 

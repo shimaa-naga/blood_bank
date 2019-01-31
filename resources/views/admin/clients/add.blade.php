@@ -1,5 +1,5 @@
 
-@extends('admin.index')
+@extends('admin.layout')
 
 @section('title')
 
