@@ -85,7 +85,7 @@ class MainController extends Controller
                 $query2->orWhere('content','like','%'.$request->keyword.'%');
             });
         })->with('category')->latest()->paginate(10);
-        return responseJson(1,'Posts with optional filter' , $posts);
+        return responseJson(1,'posts with optional filter' , $posts);
 
 
        /* $posts_filter = DB::table('posts')
@@ -96,7 +96,7 @@ class MainController extends Controller
             ->get();
         //return $posts_filter;
         if($posts_filter){
-            return responseJson(1 , 'Posts Search For It' , $posts_filter);
+            return responseJson(1 , 'posts Search For It' , $posts_filter);
         }
         return responseJson(0 , 'Not FOund Any Post Like It');*/
     }

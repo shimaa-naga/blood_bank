@@ -211,12 +211,13 @@
                                 </div>
 
 
+                        <a href="{{url('/adminpanel/orders')}}" class="btn btn-success ">
+                            Back
+                        </a>
 
-                        <button type="button" class="btn  btn-primary"><a href="{{url('/adminpanel/orders')}}"> Back </a></button>
-
-                        <button type="button" class="btn  btn-danger"><a href="{{url('/adminpanel/order/'.$order->id.'/delete')}}">Delete Order</a></button>
-
-
+                        <a href="{{url('/adminpanel/order/'.$order->id.'/delete')}}" class="btn btn-danger ">
+                            Delete Order
+                        </a>
 
                     </div>
 

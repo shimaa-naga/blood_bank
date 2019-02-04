@@ -618,5 +618,11 @@
 <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('admin/dist/js/demo.js')}}"></script>
+
+<script src="{{asset('cus/sweetalert2.all.min.js')}}"></script>
+<script src="{{asset('cus/sweetalert2.min.js')}}"></script>
+@include('admin.flash_message')
+
+
 </body>
 </html>

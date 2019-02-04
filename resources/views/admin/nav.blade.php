@@ -62,18 +62,52 @@
 
 <li class=" treeview">
     <a href="#">
-        <i class="fa fa-users pull-left"></i> <span>Controll in Orders</span>
+        <i class="fa  fa-bell"></i> <span>Controll in Orders</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
     </a>
     <ul class="treeview-menu">
-        <li class="active"><a href="{{url('/adminpanel/client/create')}}"><i class="fa fa-circle-o"></i> Add Client </a></li>
+        <li class="active"><a href="{{url('/adminpanel/client/create')}}"><i class="fa fa-circle-o"></i> Add Order </a></li>
         <li><a href="{{url('/adminpanel/orders')}}"><i class="fa fa-circle-o"></i> All Orders </a></li>
     </ul>
 </li>
 
 
+
+    {{-- Posts --}}
+
+
+    <li class=" treeview">
+        <a href="#">
+            <i class="fa fa-edit"></i> <span>Controll in Posts</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="active"><a href="{{url('/adminpanel/client/create')}}"><i class="fa fa-circle-o"></i> Add Post </a></li>
+            <li ><a href="{{url('/adminpanel/orders')}}"><i class="fa fa-circle-o"></i> All Posts </a></li>
+        </ul>
+    </li>
+
+
+
+
+    {{-- Contacts --}}
+
+
+    <li class=" treeview">
+        <a href="#">
+            <i class="fa fa-envelope"></i> <span>Controll in Contacts</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="active"><a href="{{url('/adminpanel/contacts')}}"><i class="fa fa-circle-o"></i> All Contacts </a></li>
+        </ul>
+    </li>
 
 
 </ul>

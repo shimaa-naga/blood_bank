@@ -48,6 +48,11 @@ Route::group(['middleware' => ['web','admin'], 'namespace' => 'Admin'] , functio
     Route::get('/adminpanel/order/{id}/delete','OrdersController@delete');
 
 
+    // Contacts
+    Route::get('/adminpanel/contacts','ContactsController@index');
+    Route::get('/adminpanel/contact/{id}/details','ContactsController@contact_details');
+
+
     //setting site
     Route::get('/adminpanel/sitesetting','SiteSettingController@index');
     Route::post('/adminpanel/sitesetting','SiteSettingController@updateSettings');
